@@ -66,8 +66,8 @@ const RecipeCard = ({ recipe }) => {
 
   return (
     <>
-      <Popover id={id} open={open} anchorEl={anchorEl} onClose={() => setAnchorEl(null)}
-        anchorOrigin={{ vertical: 'bottom', horizontal: 'right', }} transformOrigin={{ vertical: 'top', horizontal: 'left', }}>
+      <Popover id={id} open={open} anchorEl={anchorEl} onClose={() => setAnchorEl(null)} //sx={{position: 'absolute'}}
+        anchorOrigin={{ vertical: 'top', horizontal: 'start', }} transformOrigin={{ vertical: 'top', horizontal: 'left', }}>
 
         <Demo key={0}><List key={12}><ListItem key={1}>
           <ListItemAvatar key={2}><Avatar><SignalCellularAltIcon /></Avatar></ListItemAvatar>
@@ -92,7 +92,7 @@ const RecipeCard = ({ recipe }) => {
           avatar={<ArrowTitle title={recipe.Name}
             container={<Avatar sx={{ bgcolor: PurpleColor }} aria-label="recipe">{recipe.Name ? recipe.Name[0] : ""}</Avatar>} />}
           action={<ArrowTitle title="פרטים נוספים"
-            container={<IconButton aria-label="settings" onClick={() => setAnchorEl(event.currentTarget)}><MoreVertIcon /></IconButton>} />}
+            container={<IconButton aria-label="settings" onClick={(event) => setAnchorEl(event.currentTarget)}><MoreVertIcon /></IconButton>} />}
         />
 
         <CardMedia component="img" height="194" image={recipe.Img} alt={`תמונה של ${recipe.Name}`} />
@@ -102,7 +102,7 @@ const RecipeCard = ({ recipe }) => {
         </CardContent>
 
         <CardActions disableSpacing>
-          <Link to="/singleRecipe"><ArrowTitle title="לצפיה במתכון המלא"
+          <Link to={`/singleRecipe/${recipe.Id}`}><ArrowTitle title="לצפיה במתכון המלא"
             container={<IconButton aria-label="see full recipe"><FileOpenIcon /></IconButton>} /></Link>
           {
             recipe.UserId == userId &&

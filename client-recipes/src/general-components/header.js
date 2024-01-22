@@ -21,14 +21,14 @@ const HeaderComp = () => {
                 <ButtonGroup color="secondary" size="large" sx={[{ height: "5vh" }]}>
 
                     <Link to="/shopping">
-                        <ArrowTitle title="לכל המתכונים" container={<Button name="/shopping"
+                        <ArrowTitle title="לרשימת הקניות" container={<Button name="/shopping"
                             variant={active === "/shopping" ? "text" : "contained"} onClick={ev => changeMenu(ev.target.name)}>
                             לרשימת הקניות
                         </Button>} />
                     </Link>
 
                     <Link to="/addRecipe" >
-                        <ArrowTitle title="לכל המתכונים" container={
+                        <ArrowTitle title="להוסיף מתכון" container={
                             <Button name="/addRecipe" variant={active === "/addRecipe" ? "text" : "contained"} onClick={ev => changeMenu(ev.target.name)}>
                                 להוסיף מתכון
                             </Button>
