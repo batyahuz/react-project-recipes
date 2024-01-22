@@ -7,7 +7,6 @@ const Home = () => {
     const user = useSelector(state => state.user);
 
     return <>
-        {/* <ButtonGroup orientation="vertical" color="secondary" size="large"> */}
         <ButtonGroup color="secondary" size="large" sx={[{ height: "35vh" }, { direction: "ltr" }]}>
 
             <Link sx={{ marginTop: "4px" }} to="/shopping">

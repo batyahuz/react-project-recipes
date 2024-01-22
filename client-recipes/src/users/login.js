@@ -3,7 +3,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
-import { Button, Input } from "@mui/material";
+import { Button } from "@mui/material";
 import MyInput from "../general-fields/inputField";
 import { LogInDispach } from "../services/user";
 import { useEffect } from "react";

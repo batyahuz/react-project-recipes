@@ -66,7 +66,7 @@ const RecipeCard = ({ recipe }) => {
 
   return (
     <>
-      <Popover id={id} open={open} anchorEl={anchorEl} onClose={() => setAnchorEl(null)} //sx={{position: 'absolute'}}
+      <Popover id={id} open={open} anchorEl={anchorEl} onClose={() => setAnchorEl(null)} 
         anchorOrigin={{ vertical: 'top', horizontal: 'start', }} transformOrigin={{ vertical: 'top', horizontal: 'left', }}>
 
         <Demo key={0}><List key={12}><ListItem key={1}>

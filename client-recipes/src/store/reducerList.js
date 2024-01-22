@@ -21,7 +21,6 @@ function ListReducer(state = initialState, action) {
             return { ...state, list: list }
         }
         case actionType.DELETE_ITEM: {
-            // const list = [...state.list].filter(x => x.Id != action.payload);
             const list = [...state.list].filter(x => x.Id !== action.payload && x.Count !== -1);
             return { ...state, list: list }
         }

@@ -11,13 +11,11 @@ import Typography from '@mui/material/Typography';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import SignalCellularAltIcon from '@mui/icons-material/SignalCellularAlt';
 import ArrowTitle from '../general-fields/arrow-title';
-import { List, ListItem, ListItemAvatar, ListItemText, Popover } from '@mui/material';
-import { useDispatch, useSelector } from 'react-redux';
+import { List, ListItem, ListItemAvatar, ListItemText } from '@mui/material';
+import { useSelector } from 'react-redux';
 import CategoryIcon from '@mui/icons-material/Category';
-import Swal from 'sweetalert2';
 import { UpdateListmDispach } from '../services/list';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
-import { useEffect } from "react";
 
 const SingleRecipe = () => {
     const { id } = useParams();
@@ -27,11 +25,6 @@ const SingleRecipe = () => {
     let categoriesDictionary = [];
     categories.map(c => categoriesDictionary.push({ name: c.Name, id: c.Id }))
 
-    // useEffect(() => {
-    //     console.log("id", id);
-    //     console.log("recipe", recipe);
-    //     console.log("useSelector", recipes);
-    // }, []);
     return <>
         <Container maxWidth="sm">
             <Stack spacing={2}>

@@ -2,13 +2,10 @@ import * as yup from "yup"
 import { useFieldArray, useForm } from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup"
 import { useSelector, useDispatch } from "react-redux";
-import { Button, FormControl, FormHelperText, Input, TextField } from "@mui/material"
+import { Button } from "@mui/material"
 import MyInput from "../general-fields/inputField"
 import { useEffect, useState } from "react"
 import MySelect from "../general-fields/selcetField"
-import { Confirm } from "semantic-ui-react";
-import CloseIcon from '@mui/icons-material/Close';
-import { AddCategory } from "../services/categories";
 import ArrowTitle from "../general-fields/arrow-title";
 import { AddRecipeDispach, EditRecipeDispach } from "../services/recipes";
 import { PurpleColor } from "../general-fields/colors";
@@ -30,13 +27,11 @@ const AddRecipe = ({ prop }) => {
     }).required("זהו שדה חובה");
 
     const dispatch = useDispatch();
-    const [showAddCategory, setShowAddCategory] = useState(false);
     const [errorNewCategory, setErrorNewCategory] = useState("");
     const { userId, categories } = useSelector(state => ({ userId: state.user.Id, categories: state.categories.categories }));
     const { register, handleSubmit, formState: { errors }, control } = useForm({ resolver: yupResolver(schema) });
     const { fields: Instructions, append: appendInstruction, remove: removeInstruction } = useFieldArray({ control, name: "Instructions" });
     const { fields: Ingredient, append: appendIngridient, remove: removeIngridient } = useFieldArray({ control, name: "Ingridient" });
-    const [instsructionsError, setInstsructionsError] = useState([]);
     const [ingridientError, setIngridientError] = useState([]);
 
     var counter = 0;
@@ -55,12 +50,10 @@ const AddRecipe = ({ prop }) => {
     const checkValidation = () => {
         if (errors["Instructions"]) {
             setErrorNewCategory([...errors["Instructions"]]);
-            console.log(errors["Instructions"]);
             return false;
         }
         if (errors["Ingridient"]) {
             setIngridientError([...errors["Ingridient"]]);
-            console.log(errors["Ingridient"]);
             return false;
         }
         return true;
@@ -79,9 +72,6 @@ const AddRecipe = ({ prop }) => {
 
     return (
         <>
-            {console.log("errors;", errors)}
-            {console.log("errors;", errors["Ingridient"])}
-            {console.log("errors;", errors["Ingridient"] ? errors["Ingridient"]["Name"] : "")}
             <form onSubmit={handleSubmit(onSubmit)}>
 
                 <MyInput type="text" name="Name" register={register} errors={errors} label="שם המתכון"
@@ -98,39 +88,6 @@ const AddRecipe = ({ prop }) => {
 
                 <MySelect name="CategoryId" register={register} label="קטגוריה" errors={errors} defaultValue={prop ? prop[0]?.CategoryId : ""} options={categories} width="80%" />
                 <br />
-                <Button color="secondary" variant="contained" onClick={e => setShowAddCategory(!showAddCategory)}>הוסף קטגוריה</Button>
-                <Confirm
-                    open={showAddCategory}
-                    header="הוספת קטגוריה"
-                    content={<>
-                        <FormControl sx={{ m: 1, minWidth: 120 }}>
-                            <TextField
-                                color="secondary"
-                                id={"standard-basic"}
-                                label={"שם הקטגוריה"}
-                                variant="standard"
-                                onChange={(event) => {
-                                    console.log("evnt add category' on change:", event);
-                                    if (categories.find(x => x.Name === event.value) != undefined)
-                                        setErrorNewCategory("קטגוריה כבר קיימת")
-                                    else
-                                        setErrorNewCategory("")
-                                }
-                                }
-                            />
-                            <FormHelperText >{errorNewCategory}</FormHelperText>
-                        </FormControl>
-                    </>
-                    }
-                    confirmButton="שמור קטגוריה חדשה"
-                    cancelButton={<CloseIcon />}
-                    onConfirm={(event, data) => {
-                        console.log("onConfirm - add category", event);
-                        // dispatch(AddCategory()).then
-                        // setShowAddCategory(false);        
-                    }}
-                    onCancel={(e, d) => setShowAddCategory(false)}
-                />
 
                 <div style={Object.assign({ border: "1px solid " + PurpleColor() }, { marginTop: "5px" }, { borderRadius: "5px" },
                     { margin: "auto" }, { marginBottom: "5px" }, { width: "80%" })}>

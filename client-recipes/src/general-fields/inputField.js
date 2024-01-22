@@ -1,5 +1,4 @@
 import { Box, FormControl, FormHelperText, Input, TextField } from "@mui/material";
-import ArrowTitle from "./arrow-title";
 
 const PrivateInput = ({ name, nameForError, register, errors, label, helperText, multiline, defaultValue, width }) => {
     return <>

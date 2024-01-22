@@ -1,32 +1,16 @@
 import { Box, List, ListItem, ListItemIcon, ListItemText, TableCell, TableRow } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
-import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';//להוסיף לעגלה
-import RemoveShoppingCartIcon from '@mui/icons-material/RemoveShoppingCart';//למחוק את כל העגלה
-import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';//להוריד כמות של המוצר
-import AddCircleIcon from '@mui/icons-material/AddCircle';//להוסיף בכמות של המוצר
-import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';//קניתי את כל הכמות של המוצר
+import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
+import AddCircleIcon from '@mui/icons-material/AddCircle';
+import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
 import axios from "axios";
 import ArrowTitle from "../general-fields/arrow-title";
 import { DeleteItemDispach, UpdateListmDispach } from "../services/list";
-import Swal from "sweetalert2";
-import { PurpleColor } from "../general-fields/colors";
-import { useEffect } from "react";
 import { Segment } from "semantic-ui-react";
 
 const Shopping = () => {
     const dispatch = useDispatch();
     const list = useSelector(state => state.list.list);
-
-    // var counter = 0;
-    // useEffect(() => {
-    //     if (list.length === 0 && counter > 0) {
-    //         counter++;
-    //         Swal.fire({
-    //             title: "ייש", text: "סיימת את הקניות שלך!!\nעכשיו אפשר ללכת לאפות ולבשל",
-    //             icon: "success", confirmButtonColor: PurpleColor(), timer: 1500
-    //         });
-    //     }
-    // }, [list]);
 
     const handleDeleteIng = (id, userId) => {
         dispatch(DeleteItemDispach(id, userId));

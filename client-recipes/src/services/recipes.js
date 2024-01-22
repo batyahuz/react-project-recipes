@@ -19,7 +19,7 @@ export const AddRecipeDispach = (userId, ingredients, instructions, data) => {
         }).then(res => {
             dispatch({ type: actionType.ADD_RECIPE, payload: res.data });
             Swal.fire({ position: "center", icon: "success", title: "המתכון נוסף בהצלחה", showConfirmButton: false, timer: 1500 });
-        }).catch(error => { console.log(error); Swal.fire({ title: "אויש", text: error.data, icon: "error", confirmButtonColor: PurpleColor() }); });
+        }).catch(error => { Swal.fire({ title: "אויש", text: error.data, icon: "error", confirmButtonColor: PurpleColor() }); });
     }
 }
 
@@ -31,7 +31,7 @@ export const EditRecipeDispach = (id, userId, ingredients, instructions, data) =
         }).then(res => {
             dispatch({ type: actionType.EDIT_RECIPE, payload: res.data });
             Swal.fire({ position: "center", icon: "success", title: "המתכון עודכן בהצלחה", showConfirmButton: false, timer: 1500 });
-        }).catch(error => { console.log(error); Swal.fire({ title: "אויש", text: error.data, icon: "error", confirmButtonColor: PurpleColor() }) });
+        }).catch(error => { Swal.fire({ title: "אויש", text: error.data, icon: "error", confirmButtonColor: PurpleColor() }) });
     }
 }
 
